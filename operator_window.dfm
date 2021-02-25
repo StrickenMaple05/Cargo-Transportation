@@ -27,7 +27,7 @@ object fWindow: TfWindow
     TabOrder = 0
     Tabs.Strings = (
       #1040#1082#1090#1080#1074#1085#1099#1077' '#1079#1072#1082#1072#1079#1099
-      #1048#1089#1090#1086#1088#1080#1103' '#1079#1072#1082#1072#1079#1086#1074)
+      #1047#1072#1074#1077#1088#1096#1077#1085#1085#1099#1077' '#1079#1072#1082#1072#1079#1099)
     TabIndex = 0
     OnChange = TabControl1Change
     object DBGrid1: TDBGrid
@@ -44,6 +44,7 @@ object fWindow: TfWindow
       TitleFont.Name = 'Tahoma'
       TitleFont.Style = []
       OnDrawColumnCell = DBGrid1DrawColumnCell
+      OnDblClick = DBGrid1DblClick
     end
     object DBGrid2: TDBGrid
       Left = 4
@@ -58,6 +59,7 @@ object fWindow: TfWindow
       TitleFont.Height = -11
       TitleFont.Name = 'Tahoma'
       TitleFont.Style = []
+      OnDblClick = DBGrid2DblClick
     end
   end
   object MainMenu1: TMainMenu
@@ -121,29 +123,11 @@ object fWindow: TfWindow
     object cdsOrderCompletedORDER_NAME: TStringField
       FieldName = 'ORDER_NAME'
     end
-    object cdsOrderCompletedOPERATOR_ID: TIntegerField
-      FieldName = 'OPERATOR_ID'
-    end
-    object cdsOrderCompletedTRUCK_ID: TIntegerField
-      FieldName = 'TRUCK_ID'
-    end
-    object cdsOrderCompletedLOADER_ID: TIntegerField
-      FieldName = 'LOADER_ID'
-    end
-    object cdsOrderCompletedCUSTOMER_ID: TIntegerField
-      FieldName = 'CUSTOMER_ID'
-    end
     object cdsOrderCompletedSTART_ADDRESS: TStringField
       FieldName = 'START_ADDRESS'
     end
     object cdsOrderCompletedEND_ADDRESS: TStringField
       FieldName = 'END_ADDRESS'
-    end
-    object cdsOrderCompletedFLOOR: TIntegerField
-      FieldName = 'FLOOR'
-    end
-    object cdsOrderCompletedELEVATOR: TIntegerField
-      FieldName = 'ELEVATOR'
     end
     object cdsOrderCompletedSIZE: TIntegerField
       FieldName = 'SIZE'
@@ -166,29 +150,11 @@ object fWindow: TfWindow
     object cdsOrderHistoryORDER_NAME: TStringField
       FieldName = 'ORDER_NAME'
     end
-    object cdsOrderHistoryOPERATOR_ID: TIntegerField
-      FieldName = 'OPERATOR_ID'
-    end
-    object cdsOrderHistoryTRUCK_ID: TIntegerField
-      FieldName = 'TRUCK_ID'
-    end
-    object cdsOrderHistoryLOADER_ID: TIntegerField
-      FieldName = 'LOADER_ID'
-    end
-    object cdsOrderHistoryCUSTOMER_ID: TIntegerField
-      FieldName = 'CUSTOMER_ID'
-    end
     object cdsOrderHistorySTART_ADDRESS: TStringField
       FieldName = 'START_ADDRESS'
     end
     object cdsOrderHistoryEND_ADDRESS: TStringField
       FieldName = 'END_ADDRESS'
-    end
-    object cdsOrderHistoryFLOOR: TIntegerField
-      FieldName = 'FLOOR'
-    end
-    object cdsOrderHistoryELEVATOR: TIntegerField
-      FieldName = 'ELEVATOR'
     end
     object cdsOrderHistorySIZE: TIntegerField
       FieldName = 'SIZE'
@@ -214,29 +180,11 @@ object fWindow: TfWindow
     object cdsOrderUnCompletedORDER_NAME: TStringField
       FieldName = 'ORDER_NAME'
     end
-    object cdsOrderUnCompletedOPERATOR_ID: TIntegerField
-      FieldName = 'OPERATOR_ID'
-    end
-    object cdsOrderUnCompletedTRUCK_ID: TIntegerField
-      FieldName = 'TRUCK_ID'
-    end
-    object cdsOrderUnCompletedLOADER_ID: TIntegerField
-      FieldName = 'LOADER_ID'
-    end
-    object cdsOrderUnCompletedCUSTOMER_ID: TIntegerField
-      FieldName = 'CUSTOMER_ID'
-    end
     object cdsOrderUnCompletedSTART_ADDRESS: TStringField
       FieldName = 'START_ADDRESS'
     end
     object cdsOrderUnCompletedEND_ADDRESS: TStringField
       FieldName = 'END_ADDRESS'
-    end
-    object cdsOrderUnCompletedFLOOR: TIntegerField
-      FieldName = 'FLOOR'
-    end
-    object cdsOrderUnCompletedELEVATOR: TIntegerField
-      FieldName = 'ELEVATOR'
     end
     object cdsOrderUnCompletedSIZE: TIntegerField
       FieldName = 'SIZE'

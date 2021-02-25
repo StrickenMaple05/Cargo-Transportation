@@ -12,7 +12,8 @@ uses
   order in 'order.pas' {fOrder},
   order_info in 'order_info.pas' {fOrderInfo},
   login in 'login.pas' {fLogin},
-  confirm_order in 'confirm_order.pas' {fConfirmOrder};
+  confirm_order in 'confirm_order.pas' {fConfirmOrder},
+  order_select in 'order_select.pas' {fOrderSelect};
 
 {$R *.res}
 
@@ -30,5 +31,6 @@ begin
   Application.CreateForm(TfLoader, fLoader);
   Application.CreateForm(TfOrderInfo, fOrderInfo);
   Application.CreateForm(TfConfirmOrder, fConfirmOrder);
+  Application.CreateForm(TfOrderSelect, fOrderSelect);
   Application.Run;
 end.

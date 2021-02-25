@@ -174,7 +174,6 @@ var
 begin
   selectLoaderID2:=-1;
   selectLoaderID3:=-1;
-  MemoInfo.Lines[0]:='';
   for i := 1 to 25 do
     MemoInfo.Lines.Add('');
   pos := false;

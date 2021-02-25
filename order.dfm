@@ -99,8 +99,6 @@ object fOrder: TfOrder
     Top = 37
     Width = 297
     Height = 398
-    Lines.Strings = (
-      'Memo1')
     ParentColor = True
     ReadOnly = True
     TabOrder = 4

@@ -32,6 +32,7 @@ type
     procedure SelectOrderUnCompleted();
     procedure SelectOrderCompleted();
     procedure SelectOrderConfirmed();
+    procedure SelectOrderFromID(id : integer);
 
     //=== Прием
     procedure ReadCustomerTable(json : TJSONObject);
@@ -40,6 +41,7 @@ type
     procedure ReadOrderUnCompletedTable(json : TJSONObject);
     procedure ReadOrderCompletedTable(json : TJSONObject);
     procedure ReadOrderConfirmedTable(json : TJSONObject);
+    procedure ReadOrderFromID(json : TJSONObject);
 
     //=== Добавление
     procedure AddCustomer(fullName, phoneNumber : String);
@@ -53,6 +55,7 @@ type
 
     procedure ChangeToConfirmed(id : integer; end_time : String);
     procedure ChangeToCompleted(id : integer);
+
 
 
     //
@@ -80,7 +83,7 @@ implementation
 {$R *.dfm}
 
 uses operator_window, customer_list, customer, truck_list, loader_list,
-  confirm_order;
+  confirm_order, order_select;
 
 procedure TfLogin.SendMess(mess: string);
 begin
@@ -152,23 +155,6 @@ begin
 end;
 
 //========= Отправление запросов
-
-procedure TfLogin.ChangeToCompleted(id: Integer);
-var
-  json : TJSONObject;
-  jsonAr : TJSONArray;
-  mess : string;
-begin
-  json:=TJSONObject.Create;
-  json.AddPair('type', 'stored_proc');
-  json.AddPair('name', 'change_to_completed');
-  jsonAr.Add(id);
-  json.AddPair('params', jsonAr);
-
-  mess:=json.ToString;
-  SendMess(mess);
-  end;
-
 procedure TfLogin.SelectCustomer();
 var
 json : TJSONObject;
@@ -250,6 +236,22 @@ begin
   SendMess(mess);
 end;
 
+procedure TfLogin.SelectOrderFromID(id: Integer);
+var
+  json : TJSONObject;
+  jsonAr : TJSONArray;
+  mess : string;
+begin
+  json:=TJSONObject.Create;
+  jsonAr:=TJSONArray.Create;
+  json.AddPair('type', 'select');
+  json.AddPair('query', 'order_from_id');
+  jsonAr.Add(id);
+  json.AddPair('params', jsonAr);
+
+  mess:=json.ToString;
+  SendMess(mess);
+end;
 
 //========= Считывание таблиц
 procedure TfLogin.ReadCustomerTable(json : TJSONObject);
@@ -338,19 +340,13 @@ begin
       jsonAr:=json.GetValue('rows') as TJSONArray;
       for i := 0 to Pred(jsonAr.Count) do begin
         fWindow.cdsOrderUnCompleted.AppendRecord([
-          jsonAr.Items[i].FindValue('0').Value.ToInteger,
-          jsonAr.Items[i].FindValue('1').Value,
-          jsonAr.Items[i].FindValue('2').Value.ToInteger,
-          jsonAr.Items[i].FindValue('3').Value.ToInteger,
-          jsonAr.Items[i].FindValue('4').Value.ToInteger,
-          jsonAr.Items[i].FindValue('5').Value.ToInteger,
-          jsonAr.Items[i].FindValue('6').Value,
-          jsonAr.Items[i].FindValue('7').Value,
-          jsonAr.Items[i].FindValue('8').Value.ToInteger,
-          jsonAr.Items[i].FindValue('9').Value.ToInteger,
-          jsonAr.Items[i].FindValue('10').Value.ToInteger,
-          jsonAr.Items[i].FindValue('11').Value.ToInteger,
-          jsonAr.Items[i].FindValue('12').Value
+          jsonAr.Items[i].FindValue('0').Value.ToInteger, // ID
+          jsonAr.Items[i].FindValue('1').Value,           // ORDER_NAME
+          jsonAr.Items[i].FindValue('6').Value,           // START_ADDRESS
+          jsonAr.Items[i].FindValue('7').Value,           // END_ADDRESS
+          jsonAr.Items[i].FindValue('10').Value.ToInteger,// SIZE
+          jsonAr.Items[i].FindValue('11').Value.ToInteger,// TOTAL
+          jsonAr.Items[i].FindValue('12').Value           // START_TIME
         ]);
       end;
   end;
@@ -376,29 +372,33 @@ begin
       end;
 
       jsonAr:=json.GetValue('rows') as TJSONArray;
-      for i := 0 to Pred(jsonAr.Count) do begin
-        if fConfirmOrder.Visible then begin
-        fConfirmOrder.cdsOrderCompleted.AppendRecord([
-               jsonAr.Items[i].FindValue('0').Value.ToInteger,
-          jsonAr.Items[i].FindValue('1').Value
-        ]);
-        end
-        else begin
+      if fConfirmOrder.Visible then begin
+          for i := 0 to Pred(jsonAr.Count) do begin
+          fConfirmOrder.cdsOrderCompleted.AppendRecord([
+            jsonAr.Items[i].FindValue('0').Value.ToInteger, // ID
+            jsonAr.Items[i].FindValue('1').Value,           // ORDER_NAME
+            jsonAr.Items[i].FindValue('6').Value,           // START_ADDRESS
+            jsonAr.Items[i].FindValue('7').Value,           // END_ADDRESS
+            jsonAr.Items[i].FindValue('10').Value.ToInteger,// SIZE
+            jsonAr.Items[i].FindValue('11').Value.ToInteger,// TOTAL
+            jsonAr.Items[i].FindValue('12').Value           // START_TIME
+          ]);
+          end;
+
+      end
+      else begin
+
+        for i := 0 to Pred(jsonAr.Count) do begin
           fWindow.cdsOrderCompleted.AppendRecord([
-          jsonAr.Items[i].FindValue('0').Value.ToInteger,
-          jsonAr.Items[i].FindValue('1').Value,
-          jsonAr.Items[i].FindValue('2').Value.ToInteger,
-          jsonAr.Items[i].FindValue('3').Value.ToInteger,
-          jsonAr.Items[i].FindValue('4').Value.ToInteger,
-          jsonAr.Items[i].FindValue('5').Value.ToInteger,
-          jsonAr.Items[i].FindValue('6').Value,
-          jsonAr.Items[i].FindValue('7').Value,
-          jsonAr.Items[i].FindValue('8').Value.ToInteger,
-          jsonAr.Items[i].FindValue('9').Value.ToInteger,
-          jsonAr.Items[i].FindValue('10').Value.ToInteger,
-          jsonAr.Items[i].FindValue('11').Value.ToInteger,
-          jsonAr.Items[i].FindValue('12').Value
+          jsonAr.Items[i].FindValue('0').Value.ToInteger, // ID
+          jsonAr.Items[i].FindValue('1').Value,           // ORDER_NAME
+          jsonAr.Items[i].FindValue('6').Value,           // START_ADDRESS
+          jsonAr.Items[i].FindValue('7').Value,           // END_ADDRESS
+          jsonAr.Items[i].FindValue('10').Value.ToInteger,// SIZE
+          jsonAr.Items[i].FindValue('11').Value.ToInteger,// TOTAL
+          jsonAr.Items[i].FindValue('12').Value           // START_TIME
         ]);
+
         end;
       end;
 
@@ -420,27 +420,58 @@ begin
       jsonAr:=json.GetValue('rows') as TJSONArray;
       for i := 0 to Pred(jsonAr.Count) do begin
         fWindow.cdsOrderHistory.AppendRecord([
-          jsonAr.Items[i].FindValue('0').Value.ToInteger,
-          jsonAr.Items[i].FindValue('1').Value,
-          jsonAr.Items[i].FindValue('2').Value.ToInteger,
-          jsonAr.Items[i].FindValue('3').Value.ToInteger,
-          jsonAr.Items[i].FindValue('4').Value.ToInteger,
-          jsonAr.Items[i].FindValue('5').Value.ToInteger,
-          jsonAr.Items[i].FindValue('6').Value,
-          jsonAr.Items[i].FindValue('7').Value,
-          jsonAr.Items[i].FindValue('8').Value.ToInteger,
-          jsonAr.Items[i].FindValue('9').Value.ToInteger,
-          jsonAr.Items[i].FindValue('10').Value.ToInteger,
-          jsonAr.Items[i].FindValue('11').Value.ToInteger,
-          jsonAr.Items[i].FindValue('12').Value,
-          jsonAr.Items[i].FindValue('13').Value
+          jsonAr.Items[i].FindValue('0').Value.ToInteger, // ID
+          jsonAr.Items[i].FindValue('1').Value,           // ORDER_NAME
+          jsonAr.Items[i].FindValue('6').Value,           // START_ADDRESS
+          jsonAr.Items[i].FindValue('7').Value,           // END_ADDRESS
+          jsonAr.Items[i].FindValue('10').Value.ToInteger,// SIZE
+          jsonAr.Items[i].FindValue('11').Value.ToInteger,// TOTAL
+          jsonAr.Items[i].FindValue('12').Value,          // START_TIME
+          jsonAr.Items[i].FindValue('13').Value           // END_TIME
         ]);
       end;
 
   end;
 end;
 
-//========= Добавление в бд
+procedure TfLogin.ReadOrderFromID(json: TJSONObject);
+var
+  jsonAr : TJSONArray;
+  i : integer;
+begin
+  if (json.GetValue('type').ToString='"select"') and
+     (json.GetValue('query').ToString='"order_from_id"') then
+  begin
+    jsonAr:=json.GetValue('rows') as TJSONArray;
+
+    for i := 0 to Pred(jsonAr.Count) do begin
+      fOrderSelect.Info.Lines.Add(jsonAr.Items[i].ToString);
+    end;
+
+    {
+    ORDER_NAME
+    SIZE
+    START_ADDRESS
+    END_ADDRESS
+    FLOOR
+    ELEVATOR
+    TOTAL
+
+    CUSTOMER_NAME
+    CUSTOMER_PHONE_NUMBER
+
+    TRUCK_LICENSE_PLATE
+    TRUCK_SIZE
+
+    LOADER_NAME_1
+    LOADER_NAME_2
+    LOADER_NAME_3
+    }
+
+  end;
+
+end;
+//========= Добавление записи в бд
 procedure TfLogin.AddCustomer(fullName: string; phoneNumber: string);
 var
   json : TJSONObject;
@@ -519,6 +550,7 @@ begin
   SendMess(mess);
 end;
 
+//========= Изменение записи в бд
 procedure TfLogin.ChangeToConfirmed(id: Integer; end_time : String);
 var
   json : TJSONObject;
@@ -536,16 +568,38 @@ begin
   SendMess(mess);
 end;
 
+procedure TfLogin.ChangeToCompleted(id: Integer);
+var
+  json : TJSONObject;
+  jsonAr : TJSONArray;
+  mess : string;
+begin
+  json:=TJSONObject.Create;
+  jsonAr:=TJSONArray.Create;
+  json.AddPair('type', 'stored_proc');
+  json.AddPair('name', 'change_to_completed');
+  jsonAr.Add(id);
+  json.AddPair('params', jsonAr);
+
+  mess:=json.ToString;
+  SendMess(mess);
+  end;
+
+
+
+
+
+
 procedure TfLogin.ClientSocket1Read(Sender: TObject; Socket: TCustomWinSocket);
 var
 Str, test: String;
 json : TJSONObject;
 
 begin
+  Str:=Socket.ReceiveText;
   Memo1.Lines.Add(Str);
   Memo1.Lines.Add('=========');
 
-  Str:=Socket.ReceiveText;
   json:=TJSONObject.ParseJSONValue(Str) as TJSONObject;
 
   ReadCustomerTable(json);

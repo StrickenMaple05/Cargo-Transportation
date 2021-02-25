@@ -30,43 +30,25 @@ type
     cdsOrderUnCompletedORDER_NAME: TStringField;
     cdsOrderCompletedID: TIntegerField;
     cdsOrderCompletedORDER_NAME: TStringField;
-    cdsOrderCompletedOPERATOR_ID: TIntegerField;
-    cdsOrderCompletedTRUCK_ID: TIntegerField;
-    cdsOrderCompletedLOADER_ID: TIntegerField;
-    cdsOrderCompletedCUSTOMER_ID: TIntegerField;
     cdsOrderCompletedSTART_ADDRESS: TStringField;
     cdsOrderCompletedEND_ADDRESS: TStringField;
-    cdsOrderCompletedFLOOR: TIntegerField;
-    cdsOrderCompletedELEVATOR: TIntegerField;
     cdsOrderCompletedSIZE: TIntegerField;
     cdsOrderCompletedTOTAL: TIntegerField;
     cdsOrderHistoryID: TIntegerField;
     cdsOrderHistoryORDER_NAME: TStringField;
-    cdsOrderHistoryOPERATOR_ID: TIntegerField;
-    cdsOrderHistoryTRUCK_ID: TIntegerField;
-    cdsOrderHistoryLOADER_ID: TIntegerField;
-    cdsOrderHistoryCUSTOMER_ID: TIntegerField;
     cdsOrderHistorySTART_ADDRESS: TStringField;
     cdsOrderHistoryEND_ADDRESS: TStringField;
-    cdsOrderHistoryFLOOR: TIntegerField;
-    cdsOrderHistoryELEVATOR: TIntegerField;
     cdsOrderHistorySIZE: TIntegerField;
     cdsOrderHistoryTOTAL: TIntegerField;
-    cdsOrderUnCompletedOPERATOR_ID: TIntegerField;
-    cdsOrderUnCompletedTRUCK_ID: TIntegerField;
-    cdsOrderUnCompletedLOADER_ID: TIntegerField;
-    cdsOrderUnCompletedCUSTOMER_ID: TIntegerField;
     cdsOrderUnCompletedSTART_ADDRESS: TStringField;
     cdsOrderUnCompletedEND_ADDRESS: TStringField;
-    cdsOrderUnCompletedFLOOR: TIntegerField;
-    cdsOrderUnCompletedELEVATOR: TIntegerField;
     cdsOrderUnCompletedSIZE: TIntegerField;
     cdsOrderUnCompletedTOTAL: TIntegerField;
-    cdsOrderCompletedSTART_TIME: TStringField;
     cdsOrderUnCompletedSTART_TIME: TStringField;
+    N4: TMenuItem;
+    cdsOrderCompletedSTART_TIME: TStringField;
     cdsOrderHistorySTART_TIME: TStringField;
     cdsOrderHistoryEND_TIME: TStringField;
-    N4: TMenuItem;
     procedure askData();
     procedure customerAddClick(Sender: TObject);
     procedure FormActivate(Sender: TObject);
@@ -82,6 +64,8 @@ type
       DataCol: Integer; Column: TColumn; State: TGridDrawState);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure N4Click(Sender: TObject);
+    procedure DBGrid1DblClick(Sender: TObject);
+    procedure DBGrid2DblClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -95,7 +79,7 @@ implementation
 
 {$R *.dfm}
 
-uses customer, mydm, truck, loader, order, confirm_order, login;
+uses customer, mydm, truck, loader, order, confirm_order, login, order_select;
 
 procedure TfWindow.askData();
 begin
@@ -112,10 +96,33 @@ begin
   fCustomer.Release;
 end;
 
+procedure TfWindow.DBGrid1DblClick(Sender: TObject);
+begin
+  fOrderSelect:=TfOrderSelect.Create(Application);
+
+  if TabControl1.TabIndex=0 then
+    fLogin.SelectOrderFromID(cdsOrderCompleted.FieldByName('ID').Value)
+  else
+    fLogin.SelectOrderFromID(cdsOrderHistory.FieldByName('ID').Value);
+
+  fOrderSelect.ShowModal;
+  fOrderSelect.Release;
+end;
+
 procedure TfWindow.DBGrid1DrawColumnCell(Sender: TObject; const Rect: TRect;
   DataCol: Integer; Column: TColumn; State: TGridDrawState);
 begin
   // Рисовалка чего то
+end;
+
+procedure TfWindow.DBGrid2DblClick(Sender: TObject);
+begin
+  fOrderSelect:=TfOrderSelect.Create(Application);
+
+  fLogin.SelectOrderFromID(cdsOrderUnCompleted.FieldByName('ID').Value);
+
+  fOrderSelect.ShowModal;
+  fOrderSelect.Release;
 end;
 
 procedure TfWindow.FormActivate(Sender: TObject);

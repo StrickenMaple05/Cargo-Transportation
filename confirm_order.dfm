@@ -70,7 +70,22 @@ object fConfirmOrder: TfConfirmOrder
       FieldName = 'ID'
     end
     object cdsOrderCompletedNAME: TStringField
-      FieldName = 'NAME'
+      FieldName = 'ORDER_NAME'
+    end
+    object cdsOrderCompletedSTART_ADDRESS: TStringField
+      FieldName = 'START_ADDRESS'
+    end
+    object cdsOrderCompletedEND_ADDRESS: TStringField
+      FieldName = 'END_ADDRESS'
+    end
+    object cdsOrderCompletedSIZE: TIntegerField
+      FieldName = 'SIZE'
+    end
+    object cdsOrderCompletedTOTAL: TIntegerField
+      FieldName = 'TOTAL'
+    end
+    object cdsOrderCompletedSTART_TIME: TStringField
+      FieldName = 'START_TIME'
     end
   end
   object dsOrderNewConfirmed: TDataSource
@@ -86,7 +101,22 @@ object fConfirmOrder: TfConfirmOrder
       FieldName = 'ID'
     end
     object cdsOrderNewConfirmedNAME: TStringField
-      FieldName = 'NAME'
+      FieldName = 'ORDER_NAME'
+    end
+    object cdsOrderNewConfirmedSTART_ADDRESS: TStringField
+      FieldName = 'START_ADDRESS'
+    end
+    object cdsOrderNewConfirmedEND_ADDRESS: TStringField
+      FieldName = 'END_ADDRESS'
+    end
+    object cdsOrderNewConfirmedSIZE: TIntegerField
+      FieldName = 'SIZE'
+    end
+    object cdsOrderNewConfirmedTOTAL: TIntegerField
+      FieldName = 'TOTAL'
+    end
+    object cdsOrderNewConfirmedSTART_TIME: TStringField
+      FieldName = 'START_TIME'
     end
   end
 end

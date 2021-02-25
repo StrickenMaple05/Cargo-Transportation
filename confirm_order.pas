@@ -22,6 +22,16 @@ type
     cdsOrderCompletedID: TIntegerField;
     cdsOrderCompletedNAME: TStringField;
     cdsOrderNewConfirmedNAME: TStringField;
+    cdsOrderCompletedSTART_ADDRESS: TStringField;
+    cdsOrderCompletedEND_ADDRESS: TStringField;
+    cdsOrderCompletedSIZE: TIntegerField;
+    cdsOrderCompletedTOTAL: TIntegerField;
+    cdsOrderCompletedSTART_TIME: TStringField;
+    cdsOrderNewConfirmedSTART_ADDRESS: TStringField;
+    cdsOrderNewConfirmedEND_ADDRESS: TStringField;
+    cdsOrderNewConfirmedSIZE: TIntegerField;
+    cdsOrderNewConfirmedTOTAL: TIntegerField;
+    cdsOrderNewConfirmedSTART_TIME: TStringField;
     procedure DBGrid1CellClick(Column: TColumn);
     procedure DBGrid2DragDrop(Sender, Source: TObject; X, Y: Integer);
     procedure DBGrid2DragOver(Sender, Source: TObject; X, Y: Integer;

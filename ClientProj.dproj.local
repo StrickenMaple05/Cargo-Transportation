@@ -24,6 +24,7 @@
     <Transaction>1899.12.30 00:00:00.000.323,=C:\Users\User\Desktop\Delphinarium\Client\Unit1.pas</Transaction>
     <Transaction>1899.12.30 00:00:00.000.907,C:\Users\User\Desktop\Delphinarium\Client\Unit1.pas=C:\Users\User\Desktop\Delphinarium\Client\order_info.pas</Transaction>
     <Transaction>1899.12.30 00:00:00.000.390,=C:\Users\User\Desktop\Delphinarium\Client\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.381,C:\Users\User\Desktop\Delphinarium\Client\mydm.pas=C:\Users\User\Desktop\Delphinarium\Client\Unit1.pas</Transaction>
     <Transaction>1899.12.30 00:00:00.000.107,=C:\Users\User\Desktop\Delphinarium\Client\Unit2.pas</Transaction>
     <Transaction>1899.12.30 00:00:00.000.582,=C:\Users\User\Desktop\Delphinarium\Client\Unit2.pas</Transaction>
     <Transaction>1899.12.30 00:00:00.000.744,C:\Users\User\Desktop\Delphinarium\Client\Unit2.pas=C:\Users\User\Desktop\Delphinarium\Client\order.pas</Transaction>
@@ -36,17 +37,19 @@
     <Transaction>1899.12.30 00:00:00.000.744,C:\Users\User\Desktop\Delphinarium\Client\Unit2.dfm=C:\Users\User\Desktop\Delphinarium\Client\order.dfm</Transaction>
     <Transaction>1899.12.30 00:00:00.000.645,C:\Users\User\Desktop\Delphinarium\Client\confirm_order.dfm=C:\Users\User\Desktop\Delphinarium\Client\Unit1.dfm</Transaction>
     <Transaction>1899.12.30 00:00:00.000.281,C:\Users\User\Desktop\Delphinarium\Client\truck_list.pas=C:\Users\User\Desktop\Delphinarium\Client\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.889,C:\Users\User\Desktop\Delphinarium\Client\truck.dfm=C:\Users\User\Desktop\Delphinarium\Client\Unit1.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.931,C:\Users\User\Desktop\Delphinarium\Client\loader.dfm=C:\Users\User\Desktop\Delphinarium\Client\Unit2.dfm</Transaction>
     <Transaction>1899.12.30 00:00:00.000.786,C:\Users\User\Documents\Embarcadero\Studio\Projects\operator_window.dfm=C:\Users\User\Documents\Embarcadero\Studio\Projects\Unit1.dfm</Transaction>
     <Transaction>1899.12.30 00:00:00.000.855,C:\Users\User\Desktop\Delphinarium\Client\test.dfm=C:\Users\User\Desktop\Delphinarium\Client\Unit1.dfm</Transaction>
     <Transaction>1899.12.30 00:00:00.000.931,C:\Users\User\Desktop\Delphinarium\Client\loader.pas=C:\Users\User\Desktop\Delphinarium\Client\Unit2.pas</Transaction>
     <Transaction>1899.12.30 00:00:00.000.014,C:\Users\User\Desktop\Delphinarium\Client\login.pas=C:\Users\User\Desktop\Delphinarium\Client\Unit1.pas</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.381,C:\Users\User\Desktop\Delphinarium\Client\mydm.pas=C:\Users\User\Desktop\Delphinarium\Client\Unit1.pas</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.931,C:\Users\User\Desktop\Delphinarium\Client\loader.dfm=C:\Users\User\Desktop\Delphinarium\Client\Unit2.dfm</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.621,C:\Users\User\Desktop\Delphinarium\Client\customer.dfm=C:\Users\User\Desktop\Delphinarium\Client\Unit1.dfm</Transaction>
     <Transaction>1899.12.30 00:00:00.000.847,C:\Users\User\Desktop\Delphinarium\Client\operator_window.dfm=C:\Users\User\Documents\Embarcadero\Studio\Projects\operator_window.dfm</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.889,C:\Users\User\Desktop\Delphinarium\Client\truck.dfm=C:\Users\User\Desktop\Delphinarium\Client\Unit1.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.621,C:\Users\User\Desktop\Delphinarium\Client\customer.dfm=C:\Users\User\Desktop\Delphinarium\Client\Unit1.dfm</Transaction>
     <Transaction>1899.12.30 00:00:00.000.457,C:\Users\User\Desktop\Delphinarium\Client\loader_list.pas=C:\Users\User\Desktop\Delphinarium\Client\Unit2.pas</Transaction>
     <Transaction>1899.12.30 00:00:00.000.786,C:\Users\User\Documents\Embarcadero\Studio\Projects\operator_window.pas=C:\Users\User\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
     <Transaction>2021.02.25 20:10:40.297,C:\Users\User\Desktop\Delphinarium\Client\test.pas=</Transaction>
+    <Transaction>2021.02.25 21:31:17.004,=C:\Users\User\Desktop\Delphinarium\Client\Unit1.pas</Transaction>
+    <Transaction>2021.02.25 21:31:59.861,C:\Users\User\Desktop\Delphinarium\Client\order_select.pas=C:\Users\User\Desktop\Delphinarium\Client\Unit1.pas</Transaction>
+    <Transaction>2021.02.25 21:31:59.861,C:\Users\User\Desktop\Delphinarium\Client\order_select.dfm=C:\Users\User\Desktop\Delphinarium\Client\Unit1.dfm</Transaction>
   </Transactions>
 </BorlandProject>
