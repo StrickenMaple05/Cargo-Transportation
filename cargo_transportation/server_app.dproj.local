@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2021/02/22 11:20:59.000.391,=C:\Users\User\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2021/02/22 11:21:34.000.813,C:\Users\User\Documents\Embarcadero\Studio\Projects\Unit1.dfm=C:\Users\User\Documents\Embarcadero\Studio\Projects\cargo_transportation\server.dfm</Transaction>
+    <Transaction>2021/02/22 11:21:34.000.813,C:\Users\User\Documents\Embarcadero\Studio\Projects\Unit1.pas=C:\Users\User\Documents\Embarcadero\Studio\Projects\cargo_transportation\server.pas</Transaction>
+    <Transaction>2021/02/22 11:21:43.000.360,C:\Users\User\Documents\Embarcadero\Studio\Projects\Project1.dproj=C:\Users\User\Documents\Embarcadero\Studio\Projects\cargo_transportation\server_app.dproj</Transaction>
+    <Transaction>2021/02/22 11:26:28.000.183,=C:\Users\User\Documents\Embarcadero\Studio\Projects\cargo_transportation\Unit1.pas</Transaction>
+    <Transaction>2021/02/22 11:26:49.000.646,C:\Users\User\Documents\Embarcadero\Studio\Projects\cargo_transportation\Unit1.pas=C:\Users\User\Documents\Embarcadero\Studio\Projects\cargo_transportation\data_module.pas</Transaction>
+    <Transaction>2021/02/22 11:26:49.000.646,C:\Users\User\Documents\Embarcadero\Studio\Projects\cargo_transportation\Unit1.dfm=C:\Users\User\Documents\Embarcadero\Studio\Projects\cargo_transportation\data_module.dfm</Transaction>
+    <Transaction>2021/02/23 05:14:19.000.956,=C:\Users\User\Documents\Embarcadero\Studio\Projects\cargo_transportation\ModelSupport_server_app\default.txaPackage</Transaction>
+    <Transaction>2021/02/23 05:14:23.000.377,=C:\Users\User\Documents\Embarcadero\Studio\Projects\cargo_transportation\ModelSupport_server_app\default.txvpck</Transaction>
+  </Transactions>
+	<ProjectSortOrder AutoSort="0" SortType="0">
+    <File Path="ModelSupport_server_app"/>
+    <File Path="ModelSupport_server_app\default.txaPackage"/>
+    <File Path="ModelSupport_server_app\default.txvpck"/>
+    <File Path="data_module.pas"/>
+    <File Path="data_module.dfm"/>
+    <File Path="server.pas"/>
+    <File Path="server.dfm"/>
+  </ProjectSortOrder>
+</BorlandProject>
